@@ -1,0 +1,24 @@
+1. Checked current DNS servers:
+   cat /etc/resolv.conf
+
+2. Tried to resolve domain:
+   dig internal.example.com
+   nslookup internal.example.com 8.8.8.8
+
+3. Attempted HTTP connection to the IP:
+   curl -I http://<resolved-ip>
+
+4. Checked network interfaces:
+   ip a
+
+5. Updated DNS for the correct network interface:
+   sudo resolvectl dns enp1s0 8.8.8.8
+
+6. Verified DNS resolution again:
+   dig internal.example.com
+   nslookup internal.example.com
+
+(Optional)
+7. Added internal.example.com to /etc/hosts for local resolution:
+   sudo nano /etc/hosts
+   # Add line: 172.30.1.10 internal.example.com
